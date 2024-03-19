@@ -127,3 +127,56 @@ public class LetterGradeInput {
 If we use `System.out.println("Enter the average: ");` it shows the input box in a new line.
 If we use `System.out.print("Enter the average: ");` it shows the input box in the same line.
 
+# 3. Functions/Methods - LetterGradeStaticMethod.java
+Java only has methods because everything is inside classes.
+
+In Java, there are two types of functions:
+- static methods: like Python functions.
+- non-static or instance methods: like Python methods.
+
+Generally, the static methods begin with something like:
+
+```java
+public static String grade(int avg)
+```
+
+- The `String` is the type of value that the method is returning.
+- the parameters are always precedeed by their type.
+
+In the previous video, everything was inside the main method, now we are going to change to a separate method.
+
+```java
+import java.util.Scanner;
+
+public class LetterGradeStaticMethod {
+    public static String grade(int avg){
+        String grade;
+        // it is okay to have the same name for the method and the variable
+        if (avg >= 90) {
+            grade = "A";
+        } else if (avg >= 80) {
+            grade = "B";
+        } else if (avg >= 70) {
+            grade = "C";
+        } else if (avg >= 60) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+        return grade;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the average: ");
+        int avg = scan.nextInt();
+        System.out.println("Letter Grade: " + grade(avg));
+    }
+}
+```
+
+Now we have a static method and the main method, which is also a static method.
+
+The main method does not return anything. When we have a method that does not return anything, we have to use the special keywork `void`, which indicates that nothing is being returned.
+
+
