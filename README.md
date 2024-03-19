@@ -250,3 +250,54 @@ for (int x = 2; x <= n; x++) {
     result *= x;
 }
 ```
+
+# 5. Variable Scope - VariableScope.java
+The scope of a variable is the portion of a program in which the variable can be used.
+
+By default, the scope a variable in Java:
+- begins at the point at which it is declared.
+- ends at the end of the innermost block that encloses the declaration.
+
+```java
+public class VariableScope {
+    public static void printResults(int a, int b) {
+        int sum = a + b;
+        System.out.println("Sum: " + sum);
+        double avg = sum / 2.0;
+        System.out.println("Average: " + avg);
+    }
+}
+```
+
+For instance, the `sum` and the `avg` can only be used here inside `printResult`.
+
+The scope of `a` and `b` are also important: the parameters in this case, are out of the innermost block of `printResults`. The innermost block for the parameters is the class `VariableScope`.
+
+The special case is for "for loops"! In the following case the scope of `i` is only inside the for loop! It is an exception.
+
+```java
+public static void myMethod() {
+    for (int i = 0; i < 5; i++) {
+        int j = i * 3
+        System.out.println(j);
+    }
+}
+```
+
+We cannot print `i` outside the loop.
+
+If we want to be able to use `i` outside the loop, we need to declare it outside the loop:
+
+```java
+int i;
+public static void myMethod() {
+    for (i < 5; i++) {
+        int j = i * 3
+        System.out.println(j);
+    }
+}
+```
+
+In this way, we do not have a initialization in the for loop, but outside.
+
+
