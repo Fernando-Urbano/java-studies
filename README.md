@@ -42,6 +42,88 @@ int pennies;
 pennies = 3;
 ```
 
+# 2. Conditional Execution and User Input - LetterGrade.java
+- steady of `elif` we use `else if`.
+- We define the `String grade` before assigning any value to it.
 
+```java
+public class LetterGrade {
+    public static void main(String[] args) {
+        int avg = 85;
+        String grade;
 
+        if (avg >= 90) { 
+            grade = "A";
+        } else if (avg >= 80) {
+            grade = "B";
+        } else if (avg >= 70) {
+            grade = "C";
+        } else if (avg >= 60) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+        System.out.println("Letter Grade: " + grade);
+    }
+}
+```
+
+Now, how to put a input in this kind of code?
+
+## 2.1. User Input - LetterGradeInput.java
+
+For that, we need to add a `Scanner`:
+
+```java
+Scanner scan = new Scanner(System.in);
+```
+
+We are declaring the type as `Scanner`.
+
+Furthermore, we have to also add the following:
+
+```java
+System.out.println("Enter the average: ");
+int avg = scan.nextInt();
+```
+
+We also have the scan of other types:
+- `scan.nextDouble()`
+- `scan.next()`: read a single 'word' and return it as a `String`.
+- `scan.nextLine()`: read a bunch of words and return it as a `String`.
+
+For this kind of code, we need to import the util package:
+
+```java
+import java.util.Scanner;
+```
+
+```java
+import java.util.Scanner;
+
+public class LetterGradeInput {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the average: ");
+        int avg = scan.nextInt();
+
+        String grade;
+        if (avg >= 90) {
+            grade = "A";
+        } else if (avg >= 80) {
+            grade = "B";
+        } else if (avg >= 70) {
+            grade = "C";
+        } else if (avg >= 60) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+        System.out.println("Letter Grade: " + grade);
+    }
+}
+```
+
+If we use `System.out.println("Enter the average: ");` it shows the input box in a new line.
+If we use `System.out.print("Enter the average: ");` it shows the input box in the same line.
 
