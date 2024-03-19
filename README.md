@@ -179,4 +179,74 @@ Now we have a static method and the main method, which is also a static method.
 
 The main method does not return anything. When we have a method that does not return anything, we have to use the special keywork `void`, which indicates that nothing is being returned.
 
+# 4. For Loops - Factorials.java
+## 4.1. Shortcuts
+A quick idea of how to do shortcuts.
 
+Python allows for shortcuts like `+=`, `-=`, etc...
+
+Java has the same shortcut operators and also two other ones. Let's say `x` is our variable:
+- `x++`: adds 1
+- `x--`: subtracts 1
+
+The ones equal to Python:
+- `+=`
+- `-=`
+- `*=`
+- `/=`
+
+```java
+int result = 2;
+int n = 5;
+result *= n;
+n += 1;
+```
+
+Or:
+
+```java
+int result = 2;
+int n = 5;
+result *= n;
+n++;
+```
+
+## 4,2, Into For Loops
+```java
+public class Factorials {
+    public static void main(String[] args) {
+        int n = 5;
+        System.out.println("Factorial of " + n + " is " + fac(n));
+    }
+
+    public static int fac(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            int result = 1;
+            for (int x = 2; x <= n; x++) {
+                result *= x;
+            }
+            return result;
+        }
+    }
+}
+```
+
+The for loop has:
+
+```
+for (initialization; continuation-test; update) {
+    body
+}
+```
+
+- The initialization is only done once.
+- If the test is false, the for loop is over.
+- We update the for loop.
+
+```java
+for (int x = 2; x <= n; x++) {
+    result *= x;
+}
+```
