@@ -300,4 +300,66 @@ public static void myMethod() {
 
 In this way, we do not have a initialization in the for loop, but outside.
 
+# 6. Primitives, Objects and References
+In Python, when we assign a value to a variable, we are not actually storing the value in the variable.
+- The value is somewhere else in the memory.
+- The variable stores the memory address of the value.
+
+We say that a variable stores a reference to its value (also known as a pointer).
+
+In Python, when a variable represents certain types of values:
+- integers
+- floats
+- strings
+- other immutable (unchangeable) values
+It is okay to picture the value as being inside the variable (as a simplification).
+
+In Java, some types of data are actually stored inside the variables (not a simplification).
+For instance, `int`'s are stored inside the variable.
+
+Those kinds of variables are referred to as primitive types.
+
+Those data types that are stored inside the variables are known as primitive types. Those are:
+- `int`
+- `long`
+- `double`
+- `boolean`
+- a few others
+
+In Java, if something is not a primitive, it is an Object.
+
+An object is a construct that groups together:
+- one or more data values (the object's attributes or fields)
+- one or more functions (known as the object's methods)
+
+For instance, `string`'s are objects, which have the contents of the string, the length of the string, the methods associated with it.
+
+Every object is an instance of a class: `string` objects are an instance of the string class.
+
+In Python everything is an object. In Java, primitive values are not objects:
+- they are just "single" values
+- there is nothing else grouped with the value
+
+Java stores objects in the same way that Python does. Data types that work this way in Java are known as reference types (variables of those types are reference variables).
+- the object is stored outside the variable.
+- the variable stores a reference to the object.
+
+## 6.1. Why do we need to declare variables in Java?
+- Primitives are stored inside variables
+- Different primitive values require different amount of memory
+
+- int: 4 bytes
+- double: 8 bytes
+- long: 8 bytes
+- boolean: 1 byte
+
+Declaring a variable tells the compiler how much memory to allocate!
+
+For instance, 4 (four) bytes will be allocated to `count`:
+```java
+int count = 1;
+```
+
+In Python, everything is object and therefore, every variable is holding a memory address (references) with the same size. What is inside the variable is always the memory address.
+
 
