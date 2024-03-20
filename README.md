@@ -667,3 +667,152 @@ public class RectangleClient {
     }
 }
 ```
+
+# 11. Adding Methods to an Object - BetterRectangle.java and BetterRectangleClient.java
+Let's create methods that change the attributes of the class:
+
+```java
+public class BetterRectangle {
+    int width;
+    int height;
+
+    public BetterRectangle(int w, int h) {
+        this.width = w;
+        this.height = h;
+    }
+
+    public void grow(int dw, int dh) {
+        this.width += dw;
+        this.height += dh;
+    }
+
+}
+```
+
+The `grow` method is non static, meaning that it takes `this` as a parameter (implicit) and changes the object.
+
+```java
+public void grow(int dw, int dh) {
+    this.width += dw;
+    this.height += dh;
+}
+```
+
+If `static` was there, the `this` would not be available.
+
+# 12. Inheritance - Square.java and SquareClient.java
+Let's say we want to represent square as a special kind of rectangle.
+
+The initial step to inherit a class from another is by modifying the class header:
+
+```java
+public class Square extends Rectangle {
+    String unit;
+}
+```
+
+Afterwards, we declare the fields. The only fields we have to declare are the ones which are not in Rectangle.
+
+```java
+public class Square extends Rectangle {
+    String unit;
+
+    public Square(double side, String unit) {
+        super(side, side);
+        this.unit = unit;
+    }
+}
+```
+
+The `super` is used to initialize the constructor of the super class.
+
+Java requires that we do this as the very first line of the constructor!
+
+We can also override the inherited method just by rewriting it into the new class.
+
+## 12.1 Private Fields - PrivateSquare.java
+In Java, we generally make the fields private and provide indirect access through methods within the class.
+
+```java
+public class PrivateSquare {
+    private int size;
+
+    public PrivateSquare(int size) {
+        this.size = size;
+    }
+
+    public int getArea() {
+        return size * size;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public void setSize(int newSize) {
+        this.size = newSize;
+    }
+}
+```
+Than we can make sure that the values are set properly using the methods:
+
+```java
+public class PrivateSquare {
+    private int size;
+
+    public PrivateSquare(int size) {
+        this.size = size;
+    }
+
+    public int getArea() {
+        return size * size;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public void setSize(int newSize) {
+        if (newSize < 0) {
+            throw new IllegalArgumentException("Size cannot be negative");
+        } else if (newSize == 0) {
+            throw new IllegalArgumentException("Size cannot be zero");
+        }
+        this.size = newSize;
+    }
+}
+```
+
+We can also use the methods when assigning the values in the initial argument:
+
+```java
+public class PrivateSquare {
+    private int size;
+
+    public PrivateSquare(int size) {
+        this.setSize(size);
+    }
+
+    public int getArea() {
+        return size * size;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public void setSize(int newSize) {
+        if (newSize < 0) {
+            throw new IllegalArgumentException("Size cannot be negative");
+        } else if (newSize == 0) {
+            throw new IllegalArgumentException("Size cannot be zero");
+        }
+        this.size = newSize;
+    }
+}
+```
+
+Attention: a subclass has direct access to the public fields and methods of the superclass. It CANNOT access its private fields and methods of the superclass.
+
+the `get` is very useful to ensure that we can access the attributes properly.
+
