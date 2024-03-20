@@ -398,4 +398,196 @@ The `charAt` is used to get the char in a specific place.
 
 The `substring` method is going to give us an arbitrary string.
 
+# 8. Lists/Arrays - ArrayExamples.java
+Arrays are Java's equivalent of Python's list. Nonetheless, arrays are different because:
+- All the elements within an array must have the same type
+- Have less built-in functionalities
+- Have less overhead and it is easier to use them efficiently
+
+We also have to declare arrays. For instance, declaring that `temps` is an array of `int` is done with:
+
+```java
+int[] temps;
+```
+
+Some functionalities can be found here:
+```java
+public class ArrayExamples {
+    public static void main(String[] args) {
+        int[] temps = {51, 50, 36, 29, 30};
+        int first = temps[0];
+        System.out.println("The first temperature is " + first);
+        int numTemps = temps.length;
+        int last = temps[numTemps - 1];
+        System.out.println("The last temperature is " + last);
+
+        // Assign new values of elements in the array
+        temps[2] = 40;
+        System.out.println("New temps[2]: " + temps[2]);
+        System.out.println("Old temps[3]: " + temps[3]);
+        temps[3] += 5;
+        System.out.println("New temps[3]: " + temps[3]);
+    }
+}
+```
+
+With array, `length` is an attribute, because the `temps.length` is a variable.
+This is different from a string because in the string the `length` is a method.
+
+In Java, printing a list would not show the values of the array.
+
+That is because the array is an object and the variable is not storing the array itself but actually memory address (reference to the array). When we print an array, we will se a value that is the reference of the array:
+
+```java
+System.out.println(temps);
+```
+Gives for instance:
+```
+[I@c387f44
+```
+
+We have to pass the array to string, which is a non-static method:
+
+```java
+System.out.println(Arrays.toString(temps));
+```
+
+Which is part of the util packages:
+```java
+import java.util.Arrays;
+```
+
+```java
+import java.util.Arrays;
+
+public class ArrayExamples {
+    public static void main(String[] args) {
+        int[] temps = {51, 50, 36, 29, 30};
+        int first = temps[0];
+        System.out.println("The first temperature is " + first);
+        int numTemps = temps.length;
+        int last = temps[numTemps - 1];
+        System.out.println("The last temperature is " + last);
+
+        // Assign new values of elements in the array
+        temps[2] = 40;
+        System.out.println("New temps[2]: " + temps[2]);
+        System.out.println("Old temps[3]: " + temps[3]);
+        temps[3] += 5;
+        System.out.println("New temps[3]: " + temps[3]);
+        System.out.println(temps);
+        System.out.println("Print array properly:");
+        System.out.println(Arrays.toString(temps));
+    }
+}
+```
+
+# 9. Array Functionalities - ArrayFunctionalities.java
+Arrays are way more similar than Python lists in terms of functionalities.
+
+One of the functionalities present in array is the slicing of an array:
+
+```java
+Arrays.copyOfRange(values, start, end)
+```
+
+For more complex and a bigger variety of functionalities, we can use built-in collection classes for lists.
+- They can used instead of an array.
+- Objects of these classes have non-static methods (methods inside them) for a list operations.
+
+## 9.1. Create Arrays - ArrayCreationTypes.java
+The way to create an array in Java that later will get the values is to specify its size prior to creating it:
+```java
+import java.util.Arrays;
+
+public class ArrayCreationTypes {
+    public static void main(String[] args) {
+        int[] temps = new int[4];
+        System.out.println(Arrays.toString(temps));
+        double[] vals = new double[100];
+        System.out.println(Arrays.toString(vals));
+        String[] names = new String[10];
+        System.out.println(Arrays.toString(names));
+        boolean[] flags = new boolean[8];
+        System.out.println(Arrays.toString(flags));
+    }
+}
+```
+
+When we create it, the values in the array will be the default values for that type.
+
+For instance, in the previous example, printing the array would generate:
+
+```java
+[0, 0, 0, 0]
+[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[null, null, null, null, null, null, null, null, null, null]
+[false, false, false, false, false, false, false, false]
+```
+
+## 9.2. Prompt Array - ArrayPrompt.java
+Now, let's fill the arrays with value using inputs:
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ArrayPrompt {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int [] temps = new int[4];
+        System.out.println("Enter 4 temperatures: ");
+        temps[0] = scan.nextInt();
+        temps[1] = scan.nextInt();
+        temps[2] = scan.nextInt();
+        temps[3] = scan.nextInt();
+        System.out.println(Arrays.toString(temps));
+    }
+}
+```
+
+```
+Enter 4 temperatures: 
+1
+2
+3
+4
+[1, 2, 3, 4]
+```
+
+# 9.3. For Loops with Arrays - BigArrayPrompt.java
+We can use a for loop to get the input for 100 positions, for instance:
+
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BigArrayPrompt {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int [] temps = new int[100];
+        System.out.println("Enter 100 temperatures: ");
+        for (int i = 0; i < temps.length; i++) {
+            temps[i] = scan.nextInt();
+            System.out.println(Arrays.toString(temps));
+        }
+    }
+}
+```
+
+## 9.4. Element Base Loop
+We can do for loops in Python with elements of a list. For instance:
+
+```python
+for val in list_vals:
+    print(val)
+```
+
+In Java, the equivalent would be:
+```java
+for (int val: array){
+    // do something with val
+}
+```
+
+We do not initialize! It will do the same thing as the Python one.
 
