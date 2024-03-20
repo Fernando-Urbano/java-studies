@@ -591,3 +591,79 @@ for (int val: array){
 
 We do not initialize! It will do the same thing as the Python one.
 
+# 10. Writing Class
+A class is a blueprint is a definition of a data type.
+- it specifies the data values and methods of that type.
+- objects are built according to the blueprint provided by their class (they are instances of that type).
+
+Creating a class Rectangle class in Python:
+
+```python
+class Rectangle:
+    def __init__(self, w, h):
+        self.width = w
+        self.height = h
+```
+
+```java
+public class Rectangle {
+    int width;
+    int height;
+
+    public Rectangle(int w, int h) {
+        this.width = w;
+        this.height = h;
+    }
+}
+```
+
+In Java:
+- the Rectangle has to be inside the `Rectangle.java` file.
+- the `__init__` constructor in Python is the `public Rectangle` constructor in Java. The constructor has to have the same name as the class.
+- The `self` in Python is the `this` in Java. The `this` does not appear in the parameter list.
+- The construtor is not static.
+- There is no return type (not even `void`)! This is the only case in which a method in Java has no returning type.
+- In Java, we have to declare our fields prior to the constructor.
+- The Class we are building is just a blueprint because it does not have a main method and it will be used by a Client Program that will take this class and use it (this other class will have a main method).
+
+When we use the `RectangleClient.java`, we assign the new rectangle in a way that the variable has a reference to the memory (since rectangle is an object and not a primitive instance):
+
+```java
+Rectangle r = new Rectangle(3, 4);
+```
+
+```java
+public class Rectangle {
+    double height;
+    double width;
+
+    public Rectangle(double height, double width) {
+        this.height = height;
+        this.width = width;
+    }
+
+    public double getArea() {
+        return height * width;
+    }
+
+    public String sizes() {
+        return "Height: " + this.height + ", Width: " + this.width;
+    }
+}
+```
+
+```java
+public class RectangleClient {
+    public static void main(String[] args) {
+        Rectangle r = new Rectangle(3, 4);
+        System.out.println(r.sizes());
+        System.out.println("Area: " + r.getArea());
+
+        r.width += 50;
+        r.height = 5;
+
+        System.out.println(r.sizes());
+        System.out.println("Area: " + r.getArea());
+    }
+}
+```
