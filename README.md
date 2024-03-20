@@ -362,4 +362,40 @@ int count = 1;
 
 In Python, everything is object and therefore, every variable is holding a memory address (references) with the same size. What is inside the variable is always the memory address.
 
+# 7. Working with Strings
+- The `char`type is a primitive type.
+- To specify the `char` literal we surround the character by single quotes:
+
+Examples: `'a'`, `'Z'`, `'0'`, `'7'`, etc...
+
+Sorrounding with single quotes a string bigger than one in length is going to give an error.
+
+Sorrounding a string with a double quote will give a `string` type (which is not a primitive).
+
+## 7.1. Comparing Strings - WorkingWithStrings.java
+```java
+public class WorkingWithStrings {
+    
+    public static void main(String[] args) {
+        String s1 = "hello";
+        String s2 = "world!";
+        String s3 = s1 + " " + s2;
+        System.out.println(s3);
+        int numChars = s3.length();
+        System.out.println("The string s3 has " + numChars + " characters.");
+        s2 = s3.substring(0, 5) + s3.charAt(numChars - 1);
+        System.out.println(s2);
+        String s4 = s2.toUpperCase();
+        System.out.println(s4);
+    }
+}
+```
+
+The `charAt` is used to get the char in a specific place.
+- In this case, we take the last character of the string.
+- We use the number of characters - 1, because the index starts at 0.
+- There is no `-1` in Java and that is why we use `numChars - 1`.
+
+The `substring` method is going to give us an arbitrary string.
+
 
