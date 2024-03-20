@@ -591,7 +591,7 @@ for (int val: array){
 
 We do not initialize! It will do the same thing as the Python one.
 
-# 10. Writing Class
+# 10. Writing Class - Rectangle.java & RectangleClient.java
 A class is a blueprint is a definition of a data type.
 - it specifies the data values and methods of that type.
 - objects are built according to the blueprint provided by their class (they are instances of that type).
